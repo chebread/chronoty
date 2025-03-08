@@ -1,4 +1,5 @@
 const speechText = (message: string) => {
+  window.speechSynthesis.cancel();
   const utter = new SpeechSynthesisUtterance(message);
   utter.lang = 'ko-KR';
   utter.pitch = 1;

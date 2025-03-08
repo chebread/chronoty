@@ -1,35 +1,33 @@
 // @ts-ignore
-import type { Route } from './+types/home';
 import getCurrentTime from '~/lib/get-current-time';
 import {
   useIntervalIdStore,
   useIntervalTimeStore,
   useIsRunningStore,
-} from '~/atom/core-atom';
+} from '~/atom/app-atom';
 import speechText from '~/lib/speech-text';
-import { Link, useNavigate } from 'react-router';
+import { useState } from 'react';
+import Home from '~/components/home/home';
+import Set from '~/components/set/set';
+import Running from '~/components/running/running';
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: 'Chronoty' },
-    { name: 'description', content: 'Grab your precious time.' },
-  ];
-}
-
-export default function Home() {
+export default function Index() {
   const { intervalId, setIntervalId } = useIntervalIdStore();
   // const [isRunning, setIsRunning] = useState(false);
   const { isRunning, setIsRunning } = useIsRunningStore();
-  const { intervalTime } = useIntervalTimeStore(); // default 30
-  let navigate = useNavigate();
+  const { intervalTime, setIntervalTime } = useIntervalTimeStore(); // default 30
+  const [isSetMode, setIsSetMode] = useState(false);
 
-  const onClickStartBtn = (intervalTime: any) => {
+  const start = (intervalTime: any) => {
     if (!isRunning) {
       // 다중 입력 방지
       console.log('exec');
       setIsRunning(true);
       const id: any = setInterval(() => {
         console.log('running');
+
+        const isClosed = window.closed;
+        console.log(isClosed);
 
         const date = new Date();
         const seconds = date.getSeconds() + 1;
@@ -46,7 +44,7 @@ export default function Home() {
     }
   };
 
-  const onClickStopBtn = () => {
+  const stop = () => {
     if (isRunning) {
       setIsRunning(false);
       console.log('stop');
@@ -58,11 +56,33 @@ export default function Home() {
     }
   };
 
-  return (
-    <div>
-      <button onClick={() => onClickStartBtn(10)}>Start</button>
-      <br />
-      <Link to="/set">Set</Link>
-    </div>
+  return isRunning ? (
+    <Running
+      reset={() => {
+        setIsSetMode(true);
+        stop();
+      }}
+      stop={() => {
+        stop();
+        setIsSetMode(false);
+      }}
+    />
+  ) : isSetMode ? (
+    <Set
+      set={(setTime: number) => {
+        start(setTime);
+        setIsSetMode(false);
+      }}
+    />
+  ) : (
+    <Home
+      start={() => {
+        start(intervalTime);
+        setIsSetMode(false);
+      }}
+      set={() => {
+        setIsSetMode(true);
+      }}
+    />
   );
 }
