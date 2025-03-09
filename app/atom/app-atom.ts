@@ -17,7 +17,7 @@ interface IntervalTimeStoreState {
 }
 
 export const useIntervalTimeStore = create<IntervalTimeStoreState>(set => ({
-  intervalTime: 5, // default interval time
+  intervalTime: 30, // default interval time
   setIntervalTime: newTime => set({ intervalTime: newTime }),
 }));
 
