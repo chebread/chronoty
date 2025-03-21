@@ -4,7 +4,7 @@ import getCurrentTime from '../../lib/get-current-time';
 import style from './running.module.scss';
 
 export default function Running({ reset, stop }: { reset: any; stop: any }) {
-  const { intervalTime, setIntervalTime } = useIntervalTimeStore();
+  const { intervalTime } = useIntervalTimeStore();
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
 
   useEffect(() => {
