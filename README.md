@@ -1,5 +1,5 @@
 # Chronoty
-일정 시간 간격으로 현재 시간을 알려주는 서비스
+Chronoty informs you of the current time at a set interval.
 
 ## Webstie
 https://chronoty.pages.dev
