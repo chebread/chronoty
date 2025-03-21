@@ -21,13 +21,13 @@ export default function Root() {
     // 다중 입력 방지
     if (!isRunning) {
       getSpeech(''); // 일단 click 후에 바로 speech를 시작해야 나중에 발화가 시작됨 (ios safari에서) => 이유는 모름
-      console.log('exec');
+      // console.log('exec');
       setIsRunning(true);
       const id: any = setInterval(() => {
-        console.log('running');
+        // console.log('running');
 
         const isClosed = window.closed;
-        console.log(isClosed);
+        // console.log(isClosed);
 
         const date = new Date();
         const seconds = date.getSeconds() + 1;
@@ -35,7 +35,7 @@ export default function Root() {
 
         if (seconds % intervalTime == 0) {
           // % n 에 따라서 몇 초 마다 울릴 것인지 정함. 15초 마다. 30초 마다.
-          console.log('duration running');
+          // console.log('duration running');
           getSpeech(getCurrentTime());
         }
       }, 1000);
@@ -47,7 +47,7 @@ export default function Root() {
   const stop = () => {
     if (isRunning) {
       setIsRunning(false);
-      console.log('stop');
+      // console.log('stop');
       if (intervalId !== null) {
         clearInterval(intervalId);
         setIntervalId(null);

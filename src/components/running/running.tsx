@@ -20,14 +20,14 @@ export default function Running({ reset, stop }: { reset: any; stop: any }) {
         <header className={style.header}>
           <h1 className={style.title}>
             {/* Running */}
-            Running
+            <span title="Running">Running</span>
           </h1>
         </header>
         <div className={style.info}>
           <div className={style.infoItem}>
             <p className={style.infoTitle}>
               {/* Current Time */}
-              현재 시간
+              <span title="현재 시간">현재 시간</span>
             </p>
             <p className={style.infoTime} id="time_is_link">
               {currentTime}
@@ -36,7 +36,7 @@ export default function Running({ reset, stop }: { reset: any; stop: any }) {
           <div className={style.infoItem}>
             <p className={style.infoTitle}>
               {/* Time Interval */}
-              시간 간격
+              <span title="시간 간격">시간 간격</span>
             </p>
             <p className={style.infoTime}>
               {intervalTime > 59
