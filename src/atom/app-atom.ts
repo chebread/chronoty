@@ -6,7 +6,7 @@ interface IsRunningStoreState {
 }
 
 export const useIsRunningStore = create<IsRunningStoreState>(set => ({
-  // 작동중
+  // 작동 중
   isRunning: false,
   setIsRunning: newState => set({ isRunning: newState }),
 }));

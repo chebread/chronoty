@@ -4,7 +4,7 @@ export default function Home({ start, set }: { start: any; set: any }) {
   return (
     <main
       className={style.main}
-      // onClick={() => getSpeech('')} // 이렇게 해도 ios safari에서 잘 돌아감
+      // onClick={() => getSpeech('')} // 이렇게 해도 ios safari에서 잘 작동하는 것을 확인함. 그러나 비효율 적임.
     >
       <div className={style.mainWrapper}>
         <header className={style.header}>

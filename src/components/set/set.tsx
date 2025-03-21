@@ -1,12 +1,12 @@
 import style from './set.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useIntervalTimeStore } from '../../atom/app-atom';
 
 export default function Set({ set }: { set: any }) {
-  const { intervalTime, setIntervalTime } = useIntervalTimeStore();
-  const [time, setTime] = useState('30s'); // user가 입력한 값 // 일단 기본값은 30s임. 만약 유저가 이 값을 변경하려고 클릭하면 즉각 값은 사라짐(handleFocus) 원래 그냥 유지하려고 했는데 사라지는것이 맞을듯, 왜냐면 사용자가 값을 수정하려고 input을 클릭하는 것이므로
+  const { setIntervalTime } = useIntervalTimeStore();
+  const [time, setTime] = useState('30s'); // user가 입력한 값// 기본값은 30s임.
+  // 만약 유저가 이 값을 변경하려고 클릭하면 즉시 값은 초기화됨(handleFocus 함수). 사용자가 값을 수정하려고 input을 클릭하는 것이므로 값이 초기화되는 것이 맞음.
   const inputRef: any = useRef(null);
-  // const [isClicked, setIsClicked] = useState(false);
 
   const handleTimeChange = (e: any) => {
     const inputValue = e.target.value.replace(/\D/g, ''); // 숫자만 허용
@@ -51,8 +51,6 @@ export default function Set({ set }: { set: any }) {
       e.keyCode === 8 || // backspace
       e.keyCode === 46 // del
     ) {
-      // console.log('back');
-
       const inputValue = e.target.value.replace(/\D/g, '');
       if (inputValue.length === 0) {
         setTime('');
@@ -90,9 +88,7 @@ export default function Set({ set }: { set: any }) {
   };
 
   const handleFocus = () => {
-    // if (isClicked) {
     setTime('');
-    // }
     inputRef.current.select(); // 입력 필드에 포커스 후 전체 선택
   };
 
@@ -162,7 +158,6 @@ export default function Set({ set }: { set: any }) {
             className={style.inputElem}
             type="text"
             value={time}
-            // onClick={() => setIsClicked(true)}
             onChange={handleTimeChange}
             onKeyDown={handleKeyDown}
             onFocus={handleFocus}
