@@ -2,7 +2,7 @@
 @import './color-palette.css';
 
 :root {
-  --font-sans: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-sans: 'Pretendard', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 * {

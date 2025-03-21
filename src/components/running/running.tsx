@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import { useIntervalTimeStore } from "../../atom/app-atom";
-import getCurrentTime from "../../lib/get-current-time";
-import style from "./running.module.scss";
+import { useEffect, useState } from 'react';
+import { useIntervalTimeStore } from '../../atom/app-atom';
+import getCurrentTime from '../../lib/get-current-time';
+import style from './running.module.scss';
 
-// @ts-ignore
-export default function Running({ reset, stop }) {
+export default function Running({ reset, stop }: { reset: any; stop: any }) {
   const { intervalTime, setIntervalTime } = useIntervalTimeStore();
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
 
@@ -19,15 +18,26 @@ export default function Running({ reset, stop }) {
     <main className={style.main}>
       <div className={style.mainWrapper}>
         <header className={style.header}>
-          <h1 className={style.title}>Running...</h1>
+          <h1 className={style.title}>
+            {/* Running */}
+            Running
+          </h1>
         </header>
         <div className={style.info}>
           <div className={style.infoItem}>
-            <p className={style.infoTitle}>Current Time</p>
-            <p className={style.infoTime}>{currentTime}</p>
+            <p className={style.infoTitle}>
+              {/* Current Time */}
+              현재 시간
+            </p>
+            <p className={style.infoTime} id="time_is_link">
+              {currentTime}
+            </p>
           </div>
           <div className={style.infoItem}>
-            <p className={style.infoTitle}>Time Interval</p>
+            <p className={style.infoTitle}>
+              {/* Time Interval */}
+              시간 간격
+            </p>
             <p className={style.infoTime}>
               {intervalTime > 59
                 ? `${Math.floor(intervalTime / 60)}m ${intervalTime % 60}s`
