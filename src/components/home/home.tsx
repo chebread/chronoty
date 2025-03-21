@@ -23,6 +23,11 @@ export default function Home({ start, set }: { start: any; set: any }) {
               해당 서비스는 화면이 켜져 있을 때만 작동합니다.
             </span>
           </p>
+          <p className={style.maker}>
+            <a href="https://github.com/chebread">
+              <span title="© 2025 Cha Haneum">&copy; 2025 Cha Haneum</span>
+            </a>
+          </p>
         </header>
         <footer className={style.footer}>
           <button className={style.startButton} onClick={start}>
