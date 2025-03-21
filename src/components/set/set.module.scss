@@ -13,30 +13,31 @@
 }
 
 .header {
-  height: 30%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  padding-top: 5rem;
 
   .title {
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1;
+    padding-bottom: 3rem;
   }
 
   .description {
     font-size: 1.25rem;
     font-weight: 500;
-    line-height: 1;
+    line-height: 1.5;
+    padding-bottom: 1rem;
   }
 
   .notice {
     font-size: 1.25rem;
     font-weight: 500;
-    line-height: 1;
-    font-style: italic;
+    line-height: 1.5;
   }
 }
 
@@ -55,7 +56,7 @@
   height: 7rem;
   width: 100%;
   font-size: 5rem;
-  line-height: 1;
+  line-height: 1.1;
   // caret-color: transparent;
   &:focus {
     outline: none !important;
@@ -72,7 +73,6 @@
   button {
     cursor: pointer;
 
-    font-style: italic;
     height: 100%;
     width: 100%;
     font-size: 2rem;
@@ -93,8 +93,7 @@
 
   .setButton {
     background-color: var(--orange-400);
-    &:hover,
-    active {
+    &:active {
       background-color: var(--orange-500);
     }
   }

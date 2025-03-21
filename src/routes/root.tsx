@@ -4,7 +4,7 @@ import {
   useIntervalTimeStore,
   useIsRunningStore,
 } from '../atom/app-atom';
-import speechText from '../lib/speech-text';
+import getSpeech from '../lib/get-speech';
 import { useState } from 'react';
 import Home from '../components/home/home';
 import Set from '../components/set/set';
@@ -14,12 +14,13 @@ export default function Root() {
   const { intervalId, setIntervalId } = useIntervalIdStore();
   // const [isRunning, setIsRunning] = useState(false);
   const { isRunning, setIsRunning } = useIsRunningStore(); // 영구 저장
-  const { intervalTime, setIntervalTime } = useIntervalTimeStore(); // 영구 저장
+  const { intervalTime } = useIntervalTimeStore(); // 영구 저장
   const [isSetMode, setIsSetMode] = useState(false); // 영구 저장
 
   const start = (intervalTime: any) => {
+    // 다중 입력 방지
     if (!isRunning) {
-      // 다중 입력 방지
+      getSpeech(''); // 일단 click 후에 바로 speech를 시작해야 나중에 발화가 시작됨 (ios safari에서) => 이유는 모름
       console.log('exec');
       setIsRunning(true);
       const id: any = setInterval(() => {
@@ -35,7 +36,7 @@ export default function Root() {
         if (seconds % intervalTime == 0) {
           // % n 에 따라서 몇 초 마다 울릴 것인지 정함. 15초 마다. 30초 마다.
           console.log('duration running');
-          speechText(getCurrentTime());
+          getSpeech(getCurrentTime());
         }
       }, 1000);
 
