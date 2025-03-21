@@ -145,7 +145,7 @@ export default function Set({ set }: { set: any }) {
             {/* the time interval */}
             시간 간격을 설정하세요.
           </p>
-          <p className={style.notice}>
+          <p className={style.description}>
             {/* Enter a number over 0 seconds */}
             0초 보다 큰수만 입력이 가능합니다.
           </p>
