@@ -26,7 +26,7 @@ export default function Root() {
       const id: any = setInterval(() => {
         // console.log('running');
 
-        const isClosed = window.closed;
+        // const isClosed = window.closed;
         // console.log(isClosed);
 
         const date = new Date();
