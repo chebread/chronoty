@@ -1,0 +1,101 @@
+.main {
+  min-height: 100%;
+  width: 100%;
+}
+.mainWrapper {
+  position: relative;
+  height: 100%;
+  max-width: 35rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .description {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .notice {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1;
+    font-style: italic;
+  }
+}
+
+.inputContainer {
+  height: 30%;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem;
+}
+
+.inputElem {
+  height: 7rem;
+  width: 100%;
+  font-size: 5rem;
+  line-height: 1;
+  // caret-color: transparent;
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  border-bottom: 1.5px black solid;
+}
+
+.footer {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  button {
+    cursor: pointer;
+
+    font-style: italic;
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+
+    transition: all 0.3s ease-out;
+
+    @media (min-width: 35rem) {
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+
+    &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .setButton {
+    background-color: var(--orange-400);
+    &:hover,
+    active {
+      background-color: var(--orange-500);
+    }
+  }
+}

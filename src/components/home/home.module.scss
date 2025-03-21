@@ -1,0 +1,91 @@
+.main {
+  min-height: 100%;
+  width: 100%;
+}
+.mainWrapper {
+  position: relative;
+  height: 100%;
+  max-width: 35rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem 0 2rem;
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1;
+    padding-bottom: 3rem;
+  }
+
+  .description {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1;
+    padding-bottom: 1rem;
+  }
+
+  .notice {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1;
+    font-style: italic;
+  }
+}
+
+.footer {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  button {
+    cursor: pointer;
+
+    font-style: italic;
+    height: 100%;
+    width: 50%;
+    font-size: 2rem;
+    font-weight: 600;
+
+    transition: all 0.3s ease-out;
+
+    @media (min-width: 35rem) {
+      &:first-child {
+        border-top-left-radius: 0.5rem;
+      }
+      &:last-child {
+        border-top-right-radius: 0.5rem;
+      }
+    }
+
+    &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .startButton {
+    background-color: var(--green-500);
+    &:hover, // mobile에서 hover이상하면 active만 남기기 or media query쓰기
+    active {
+      background-color: var(--green-600);
+    }
+  }
+
+  .setButton {
+    background-color: var(--orange-400);
+    &:hover,
+    active {
+      background-color: var(--orange-500);
+    }
+  }
+}
