@@ -17,10 +17,11 @@ export default function Running({ reset, stop }: { reset: any; stop: any }) {
       const seconds = date.getSeconds() + 1;
 
       if (seconds % intervalTime == 0) {
-        console.log('exec');
         setExeced(true);
-      } else {
-        setExeced(false);
+        setTimeout(() => {
+          // 배경색이 변한후 1초후에 배경색을 원래의 색으로 되돌림
+          setExeced(false);
+        }, 1000);
       }
     }, 1000);
     return () => clearInterval(id);

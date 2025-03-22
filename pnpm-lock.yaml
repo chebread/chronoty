@@ -23,6 +23,9 @@ importers:
       react-screen-wake-lock:
         specifier: ^3.0.4
         version: 3.0.4(react@19.0.0)
+      react-use-wake-lock:
+        specifier: ^1.0.1
+        version: 1.0.1(react@19.0.0)
       vite-tsconfig-paths:
         specifier: ^5.1.4
         version: 5.1.4(typescript@5.7.3)(vite@6.2.2(sass-embedded@1.86.0))
@@ -975,6 +978,11 @@ packages:
     engines: {node: '>=v14.21.3'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  react-use-wake-lock@1.0.1:
+    resolution: {integrity: sha512-xy/UFG7QVZc+5PGwuNQQsD6RVn29HRmAf433Ios1na3nC/vDkTl3HQCdOriIkC8PndJ5WLe3qSAe98grCngdVQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
   react@19.0.0:
     resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
@@ -2159,6 +2167,10 @@ snapshots:
   react-refresh@0.14.2: {}
 
   react-screen-wake-lock@3.0.4(react@19.0.0):
+    dependencies:
+      react: 19.0.0
+
+  react-use-wake-lock@1.0.1(react@19.0.0):
     dependencies:
       react: 19.0.0
 

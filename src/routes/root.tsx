@@ -9,7 +9,7 @@ import { useState } from 'react';
 import Home from '../components/home/home';
 import Set from '../components/set/set';
 import Running from '../components/running/running';
-// import { useWakeLock } from 'react-screen-wake-lock';
+import useWakeLock from 'react-use-wake-lock';
 
 export default function Root() {
   const { intervalId, setIntervalId } = useIntervalIdStore();
@@ -18,11 +18,20 @@ export default function Root() {
   const { intervalTime } = useIntervalTimeStore(); // 영구 저장해야함
   const [isSetMode, setIsSetMode] = useState(false); // 영구 저장해야함
 
-  // const { isSupported, released, request, release } = useWakeLock({
-  //   onRequest: () => console.log('Screen Wake Lock: requested!'),
-  //   onError: () => console.log('An error happened 💥'),
-  //   onRelease: () => console.log('Screen Wake Lock: released!'),
-  // });
+  const { request, release, isSupported } = useWakeLock({
+    onError(e, type) {
+      console.log(`ERROR (${type}) ${e.message}`, 'error');
+      console.error('Wake Lock Error: REQUEST: ', e);
+    },
+    onLock(lock) {
+      console.info('Wake Lock Acquired: ', lock);
+      console.log(`Locked`, 'lock');
+    },
+    onRelease(lock) {
+      console.log(`Released`, 'release');
+      console.info('Wake Lock Released: ', lock);
+    },
+  });
 
   const start = (intervalTime: any) => {
     // 다중 입력 방지
@@ -30,9 +39,11 @@ export default function Root() {
       getSpeech(''); // 일단 click 후에 바로 speech를 시작해야 나중에 발화가 시작됨 (ios safari에서 발생하는 오류 해결) => 이유는 알 수 없음.
       setIsRunning(true);
 
-      // if (isSupported) {
-      //   request(); // Screen Wake Lock API 실행
-      // }
+      if (isSupported) {
+        request(); // Screen Wake Lock API 실행
+      } else {
+        alert('API 지원안함');
+      }
 
       const id: any = setInterval(() => {
         // 1초 마다 실행
@@ -60,9 +71,9 @@ export default function Root() {
       }
       window.speechSynthesis.cancel(); // 현재 발화 중이여도 즉시 중단
 
-      // if (isSupported) {
-      //   release(); // Screen Wake Lock API 종료
-      // }
+      if (isSupported) {
+        release(); // Screen Wake Lock API 종료
+      }
     }
   };
 
