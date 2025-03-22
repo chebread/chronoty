@@ -2,20 +2,39 @@ import { useEffect, useState } from 'react';
 import { useIntervalTimeStore } from '../../atom/app-atom';
 import getCurrentTime from '../../lib/get-current-time';
 import style from './running.module.scss';
+import clsx from 'clsx';
 
 export default function Running({ reset, stop }: { reset: any; stop: any }) {
   const { intervalTime } = useIntervalTimeStore();
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
+  const [execed, setExeced] = useState(false);
 
   useEffect(() => {
     const id = setInterval(() => {
       setCurrentTime(getCurrentTime());
+
+      const date = new Date();
+      const seconds = date.getSeconds() + 1;
+
+      if (seconds % intervalTime == 0) {
+        console.log('exec');
+        setExeced(true);
+      } else {
+        setExeced(false);
+      }
     }, 1000);
     return () => clearInterval(id);
   }, []);
 
   return (
-    <main className={style.main}>
+    <main
+      className={clsx([
+        style.main,
+        {
+          [style.execWrapper]: execed,
+        },
+      ])}
+    >
       <div className={style.mainWrapper}>
         <header className={style.header}>
           <h1 className={style.title}>
