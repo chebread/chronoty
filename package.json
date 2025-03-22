@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vitejs/plugin-basic-ssl": "^2.0.0",
+    "clsx": "^2.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-screen-wake-lock": "^3.0.4",
     "vite-tsconfig-paths": "^5.1.4",
     "wouter": "^3.6.0",
     "zustand": "^5.0.3"
