@@ -2,7 +2,7 @@
   min-height: 100%;
   width: 100%;
   background-color: white;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.1s ease-out;
 }
 .mainWrapper {
   position: relative;
@@ -22,7 +22,10 @@
   align-items: center;
 
   .title {
-    font-size: 2.1rem;
+    font-size: 2rem;
+    @media (max-width: 35rem) {
+      font-size: 1.7rem;
+    }
     font-weight: 700;
     line-height: 1;
     padding-top: 5rem;
@@ -47,14 +50,20 @@
 }
 
 .infoTitle {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  @media (max-width: 35rem) {
+    font-size: 0.9rem;
+  }
   font-weight: 400;
   line-height: 1.5;
   font-style: italic;
 }
 
 .infoTime {
-  font-size: 2.1rem;
+  font-size: 2rem;
+  @media (max-width: 35rem) {
+    font-size: 1.7rem;
+  }
   font-weight: 500;
   line-height: 1.1;
 }
@@ -77,10 +86,13 @@
 
     height: 100%;
     width: 50%;
-    font-size: 1.75rem;
+    font-size: 1.6rem;
+    @media (max-width: 35rem) {
+      font-size: 1.35rem;
+    }
     font-weight: 600;
 
-    transition: all 0.3s ease-out;
+    // transition: all 0.3s ease-out;
 
     &:first-child {
       border-top-left-radius: 0.5rem;
@@ -99,15 +111,15 @@
 
   .stopButton {
     background-color: var(--red-500);
-    &:active {
-      background-color: var(--red-600);
-    }
+    // &:active {
+    //   background-color: var(--red-600);
+    // }
   }
 
   .resetButton {
     background-color: var(--orange-400);
-    &:active {
-      background-color: var(--orange-500);
-    }
+    // &:active {
+    //   background-color: var(--orange-500);
+    // }
   }
 }
