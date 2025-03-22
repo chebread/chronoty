@@ -92,7 +92,7 @@
     }
     font-weight: 600;
 
-    // transition: all 0.3s ease-out;
+    transition: background-color 0.1s ease-out;
 
     &:first-child {
       border-top-left-radius: 0.5rem;
@@ -111,15 +111,15 @@
 
   .stopButton {
     background-color: var(--red-500);
-    // &:active {
-    //   background-color: var(--red-600);
-    // }
+    &:active {
+      background-color: var(--red-600);
+    }
   }
 
   .resetButton {
     background-color: var(--orange-400);
-    // &:active {
-    //   background-color: var(--orange-500);
-    // }
+    &:active {
+      background-color: var(--orange-500);
+    }
   }
 }

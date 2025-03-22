@@ -63,7 +63,7 @@
     }
     font-weight: 600;
 
-    // transition: all 0.3s ease-out;
+    transition: background-color 0.1s ease-out;
 
     &:first-child {
       border-top-left-radius: 0.5rem;
@@ -82,15 +82,15 @@
 
   .startButton {
     background-color: var(--green-500);
-    // &:active {
-    //   background-color: var(--green-600);
-    // }
+    &:active {
+      background-color: var(--green-600);
+    }
   }
 
   .setButton {
     background-color: var(--orange-400);
-    // &:active {
-    //   background-color: var(--orange-500);
-    // }
+    &:active {
+      background-color: var(--orange-500);
+    }
   }
 }
